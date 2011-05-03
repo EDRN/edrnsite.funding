@@ -1,0 +1,119 @@
+<div metal:define-macro='formatFundingOp' tal:define='announcements python:view.getAnnouncementsForOpportunity(op)'>
+    <!-- Case where opportunity has no announcements -->
+    <div tal:condition='python:len(announcements) == 0'>
+        <table class='fundingOp'>
+            <tbody>
+                <tr>
+                    <th i18n:translate='fundingFolder_opTitleLabel'>Title:</th><td tal:content='op/Title'>Golden Opportunity!</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class='discreet' i18n:translate='fundingFolder_opNoAnnouncements'>
+            Note: this opportunity currently has no announcements.
+        </p>
+    </div>
+    <!-- Case where opportunity has exactly one announcement -->
+    <table tal:condition='python:len(announcements) == 1' class='fundingOp'>
+        <tbody tal:define='opType op/opportunityType; announcement python:announcements[0];'>
+            <tr>
+                <th i18n:translate='fundingFolder_opTitleLabel'>Title:</th>
+                <td>
+                    <a href='#' title='You cannot afford to pass this up.'
+                        tal:attributes='href announcement/announcementLink; title announcement/description|nothing;'
+                        tal:content='announcement/title'>
+                        Announcing a whole new way!
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th i18n:translate='fundingFolder_typeAndIDNumber'>
+                    <span tal:replace='opType' i18n:name='typeLabel'>RFA</span> Number:
+                </th>
+                <td tal:content='announcement/idNum'>R-U-5TUP1D</td>
+            </tr>
+            <tr>
+                <th i18n:translate='fundingFolder_releaseDateLabel'>Release Date:</th>
+                <td tal:content='python:view.formatDate(announcement.releaseDate)'></td>
+            </tr>
+            <tr>
+                <th i18n:translate='fundingFolder_loiDateLabel'>Letter of Intent Date(s):</th>
+                <td tal:content='python:"; ".join(announcement.loiDates)'>2009-10-10</td>
+            </tr>
+            <tr>
+                <th i18n:translate='fundingFolder_appReceiptDateLabel'>Application Receipt Date(s):</th>
+                <td tal:content='python:"; ".join(announcement.appReceiptDates)'>2009-12-12</td>
+            </tr>
+            <tr>
+                <th i18n:translate='fundingFolder_closingDateLabel'>Expiration Date:</th>
+                <td i18n:translate='fundingFolder_closingDate'>
+                    <span tal:replace='python:view.formatDate(announcement.closingDate)' i18n:name='closingDate'>2010-09-06</span>
+                    <span class='discreet' tal:condition='op/reissuable' i18n:name='reissued'>(unless reissued)</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Case where there are more than one opportunities -->
+    <table tal:condition='python:len(announcements) &gt; 1' class='fundingOp'>
+        <tbody tal:define='opType op/opportunityType;
+            sortedDates python:view.sortVariousDates(announcements);
+            loiDates sortedDates/loiDates;
+            ardDates sortedDates/ardDates;'>
+            <tr>
+                <th i18n:translate='fundingFolder_opTitlesLabel'>Titles:</th>
+                <td>
+                    <ul>
+                        <li tal:repeat='a announcements'>
+                            <a href='#' title='You cannot afford to pass this up.'
+                                tal:content='a/title'
+                                tal:attributes='href a/announcementLink; title a/description|nothing;'>
+                                Announcing a whole new way!
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th i18n:translate='fundingFolder_typeAndIDNumbers'>
+                    <span tal:replace='opType' i18n:name='typeLabel'>RFA</span> Numbers:
+                </th>
+                <td tal:content='python:" / ".join([a.idNum for a in announcements])'>1 / 2 / 3</td>
+            </tr>
+            <tr tal:condition='loiDates'>
+                <th i18n:translate='fundingFolder_loiDatesLabel'>Letters of Intent Dates:</th>
+                <td>
+                    <ul>
+                        <li tal:repeat='loi loiDates' i18n:translate='loiDateCell'>
+                            <span class='discreet' i18n:translate='forIDNumber'>
+                                For <span i18n:name='idNum' tal:replace='loi/idNum'>1</span>:
+                            </span>
+                            <span i18n:name='dates' tal:replace='python:"; ".join(loi["dates"])'>2009-10-06; 2009-12-25</span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr tal:condition='ardDates'>
+                <th i18n:translate='fundingFolder_appReceiptDatesLabel'>Application Receipt Dates:</th>
+                <td>
+                    <ul>
+                        <li tal:repeat='ard ardDates' i18n:translate='ardCell'>
+                            <span class='discreet' i18n:translate='forIDNumber'>
+                                For <span i18n:name='idNum' tal:replace='ard/idNum'>1</span>:
+                            </span>
+                            <span i18n:name='dates' tal:replace='python:"; ".join(ard["dates"])'>1976-03-01; 1977-08-12</span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th i18n:translate='fundingFolder_closingDatesLabel'>Expiration Dates:</th>
+                <td i18n:translate='fundingFolder_closingDate'>
+                    <span tal:replace='python:" / ".join([str(view.formatDate(a.closingDate)) for a in announcements])'
+                        i18n:name='closingDate'>
+                        2010-09-06 / 2011-09-06 / 2036-09-06
+                    </span>
+                    <span class='discreet' tal:condition='op/reissuable' i18n:name='reissued'>(unless reissued)</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

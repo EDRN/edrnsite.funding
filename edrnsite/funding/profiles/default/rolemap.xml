@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Copyright 2009 California Institute of Technology. ALL RIGHTS
+RESERVED. U.S. Government Sponsorship acknowledged.
+-->
+<rolemap>
+    <permissions>
+        <permission name='EDRN Site Funding: Add Funding Folder' acquire='True'>
+            <role name='Manager' />
+            <role name='Owner' />
+            <role name='Contributor' />
+        </permission>
+        <permission name='EDRN Site Funding: Add Funding Opportunity' acquire='True'>
+            <role name='Manager' />
+            <role name='Owner' />
+            <role name='Contributor' />
+        </permission>
+        <permission name='EDRN Site Funding: Add Announcement' acquire='True'>
+            <role name='Manager' />
+            <role name='Owner' />
+            <role name='Contributor' />
+        </permission>
+    </permissions>
+</rolemap>

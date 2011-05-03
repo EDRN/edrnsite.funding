@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Copyright 2009 California Institute of Technology. ALL RIGHTS
+RESERVED. U.S. Government Sponsorship acknowledged.
+-->
+<object name='portal_factory' meta_type='Plone Factory Tool'>
+    <factorytypes>
+        <type portal_type='Funding Folder' />
+        <type portal_type='Funding Opportunity' />
+        <type portal_type='Announcement' />
+    </factorytypes>
+</object>

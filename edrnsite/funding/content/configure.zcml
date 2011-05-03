@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Copyright 2009 California Institute of Technology. ALL RIGHTS
+RESERVED. U.S. Government Sponsorship acknowledged.
+-->
+<configure xmlns='http://namespaces.zope.org/zope' i18n_domain='edrnsite.funding'>
+    <class class='.fundingfolder.FundingFolder'>
+        <require permission='zope2.View' interface='..interfaces.IFundingFolder'/>
+    </class>
+    <class class='.fundingopportunity.FundingOpportunity'>
+        <require permission='zope2.View' interface='..interfaces.IFundingOpportunity'/>
+    </class>
+    <class class='.announcement.Announcement'>
+        <require permission='zope2.View' interface='..interfaces.IAnnouncement'/>
+    </class>
+    <utility
+        component='.fundingopportunity.OpportunityTypeVocabulary'
+        name='edrnsite.funding.OpportunityTypeVocabulary'
+    />
+    <subscriber
+        provides='Products.Archetypes.interfaces.IObjectPostValidation'
+        factory='.announcement.MultipleDateValidator'
+    />
+</configure>

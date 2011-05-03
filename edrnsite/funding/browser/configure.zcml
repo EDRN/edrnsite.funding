@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Copyright 2009 California Institute of Technology. ALL RIGHTS
+RESERVED. U.S. Government Sponsorship acknowledged.
+-->
+<configure xmlns='http://namespaces.zope.org'
+    xmlns:browser='http://namespaces.zope.org/browser'
+    i18n_domain='edrnsite.funding'>
+    <include package='plone.app.contentmenu'/>
+    
+    <!-- Funding Folder -->
+    <browser:resource name='funding-folder.gif' file='images/funding-folder.gif'/>
+    <browser:page
+        class='.views.FundingFolderView'
+        for='..interfaces.IFundingFolder'
+        name='view'
+        permission='zope2.View'
+    />
+    <browser:menuItem
+        action='@@view'
+        description='Default representation of a Funding Folder.'
+        for='..interfaces.IFundingFolder'
+        menu='plone_displayviews'
+        title='Funding Folder view'
+    />
+    
+    <!-- Funding Opportunity -->
+    <browser:resource name='funding-opportunity.gif' file='images/funding-opportunity.gif'/>
+    <browser:page
+        class='.views.FundingOpportunityView'
+        for='..interfaces.IFundingOpportunity'
+        name='view'
+        permission='zope2.View'
+    />
+    <browser:menuItem
+        action='@@view'
+        description='Default representation of a Funding Opportunity.'
+        for='..interfaces.IFundingOpportunity'
+        menu='plone_displayviews'
+        title='Funding Opportunity view'
+    />
+
+    <!-- Announcement -->
+    <browser:resource name='announcement.gif' file='images/announcement.gif'/>
+    <browser:page
+        class='.views.AnnouncementView'
+        for='..interfaces.IAnnouncement'
+        name='view'
+        permission='zope2.View'
+    />
+    <browser:menuItem
+        action='@@view'
+        description='Default representation of a Announcement.'
+        for='..interfaces.IAnnouncement'
+        menu='plone_displayviews'
+        title='Announcement view'
+    />
+    
+    <!-- Macro for displaying announced opportunities in a FundingFolder -->
+    <browser:page
+        for='*'
+        permission='zope2.Public'
+        name='fundingOps'
+        template='templates/fundingOps.pt'
+    />
+</configure>

@@ -1,0 +1,61 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+    xml:lang='en'
+    lang='en'
+    xmlns:tal='http://xml.zope.org/namespaces/tal'
+    xmlns:metal='http://xml.zope.org/namespaces/metal'
+    xmlns:i18n='http://xml.zope.org/namespaces/i18n'
+    metal:use-macro='context/main_template/macros/master'
+    i18n:domain='edrnsite.funding'>
+    <head>
+        <title>Announcement</title>
+    </head>
+    <body>
+        <metal:main fill-slot='main'>
+            <tal:main-macro metal:define-macro='main'>
+                <div tal:replace='structure provider:plone.abovecontenttitle' />
+                <h1 class='documentFirstHeading'> 
+                    <metal:field use-macro='python:context.widget("title", mode="view")'>
+                        Title
+                    </metal:field>
+                </h1>
+                <div tal:replace='structure provider:plone.belowcontenttitle' />
+                <p class='documentDescription'>
+                    <metal:field use-macro='python:context.widget("description", mode="view")'>Description.</metal:field>
+                </p>
+                <div tal:replace='structure provider:plone.abovecontentbody' />
+                <div>
+                    <label for='parent-fieldname-announcementLink' i18n:translate='label_announcementLink'>Announcement URL:</label>
+                    <metal:field use-macro='python:context.widget("announcementLink", mode="view")'>http://google.com/</metal:field>
+                </div>
+                <div>
+                    <label for='parent-fieldname-idNum' i18n:translate='label_idNum'>Identification Number:</label>
+                    <metal:field use-macro='python:context.widget("idNum", mode="view")'>D-E-A-T-H.1</metal:field>
+                </div>
+                <div>
+                    <label for='parent-fieldname-releaseDate' i18n:translate='label_releaseDate'>Release Date:</label>
+                    <div tal:content='python:view.formatDate(context.releaseDate)'>2009-08-10</div>
+                </div>
+                <div>
+                    <label for='parent-fieldname-closingDate' i18n:translate='label_closingDate'>Closing Date:</label>
+                    <div tal:content='python:view.formatDate(context.closingDate)'>2009-08-10</div>
+                </div>
+                <div>
+                    <label for='parent-fieldname-loiDates' i18n:translate='label_loiDates'>
+                        Letters-of-Intent Dates:
+                    </label><br/>
+                    <metal:field use-macro='python:context.widget("loiDates", mode="view")'>2014-10-22</metal:field>
+                </div>
+                <div>
+                    <label for='parent-fieldname-appReceiptDates' i18n:translate='label_appReceiptDates'>
+                        Application Receipt Dates:
+                    </label><br/>
+                    <metal:field use-macro='python:context.widget("appReceiptDates", mode="view")'>2015-09-08</metal:field>
+                </div>
+                <div metal:use-macro='context/document_relateditems/macros/relatedItems'>
+                    Any related items
+                </div>
+                <div tal:replace='structure provider:plone.belowcontentbody' />
+            </tal:main-macro>
+        </metal:main>
+    </body>
+</html>

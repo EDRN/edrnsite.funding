@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Copyright 2009 California Institute of Technology. ALL RIGHTS
+RESERVED. U.S. Government Sponsorship acknowledged.
+-->
+<object name='portal_catalog' meta_type='Plone Catalog Tool'>
+    <index name='closingDate' meta_type='DateIndex'>
+        <indexed_attr value='closingDate' />
+    </index>
+    <column value='closingDate'/>
+</object>
