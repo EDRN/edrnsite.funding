@@ -9,7 +9,7 @@ import os.path
 # ------------
 
 _name        = 'edrnsite.funding'
-_version     = '1.0.0'
+_version     = '1.0.1'
 _description = 'EDRN Funding Opportunities'
 _url         = 'http://cancer.jpl.nasa.gov/products/edrnsite-funding'
 _downloadURL = 'http://oodt.jpl.nasa.gov/dist/edrnsite'
