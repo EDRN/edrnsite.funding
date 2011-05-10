@@ -1,9 +1,5 @@
-==============
- Introduction
-==============
-
-This package provides Plone 3 content objects for Plone content types for the
-announcement and managing of EDRN funding opportunities.
+This package provides Plone content objects for for the announcement and
+managing of EDRN funding opportunities.
 
 
 Installation
@@ -277,7 +273,7 @@ Similarly, placing an announcement into the future should pop the opportunity
 back up to the current section.  We'll add a new announcement to do just
 that::
 
-    >>> tomorrow = datetime.now() + timedelta(1)
+    >>> tomorrow = datetime.now() + timedelta(2)
     >>> browser.open(portalURL + '/testing-funding-views/alpha')
     >>> browser.getLink(id='announcement').click()
     >>> browser.getControl(name='title').value = 'Alpha Announcement'
