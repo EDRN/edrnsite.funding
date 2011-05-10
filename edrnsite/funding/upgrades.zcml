@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Copyright 2011 California Institute of Technology. ALL RIGHTS
+RESERVED. U.S. Government Sponsorship acknowledged.
+-->
+<configure
+    xmlns='http://namespaces.zope.org/zope'
+    xmlns:genericsetup='http://namespaces.zope.org/genericsetup'>
+    <genericsetup:upgradeStep
+        source='0'
+        destination='4'
+        title='Null Upgrade Step (0→4)'
+        description='The EDRN Site Funding requires no custom upgrade steps to go from profile 0 to profile 4.'
+        profile='edrnsite.funding:default'
+        handler='edrnsite.funding.upgrades.nullUpgradeStep'
+        sortkey='1'
+    />
+</configure>
