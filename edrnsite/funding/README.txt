@@ -28,36 +28,18 @@ of functional tests.
 Tests
 =====
 
-In order to execute these tests, we'll first need a test browser::
+First we have to set up some things and login to the site::
 
-    >>> from Products.Five.testbrowser import Browser
-    >>> browser = Browser()
-    >>> portalURL = self.portal.absolute_url()
-        
-We also change some settings so that any errors will be reported immediately::
-
+    >>> app = layer['app']
+    >>> from plone.testing.z2 import Browser
+    >>> from plone.app.testing import SITE_OWNER_NAME, SITE_OWNER_PASSWORD
+    >>> browser = Browser(app)
     >>> browser.handleErrors = False
-    >>> self.portal.error_log._ignored_exceptions = ()
-        
-We'll also turn off the portlets.  Why?  Well for these tests we'll be looking
-for specific strings output in the HTML, and the portlets will often have
-duplicate links that could interfere with that::
+    >>> browser.addHeader('Authorization', 'Basic %s:%s' % (SITE_OWNER_NAME, SITE_OWNER_PASSWORD))
+    >>> portal = layer['portal']    
+    >>> portalURL = portal.absolute_url()
 
-    >>> from zope.component import getUtility, getMultiAdapter
-    >>> from plone.portlets.interfaces import IPortletManager, IPortletAssignmentMapping
-    >>> for colName in ('left', 'right'):
-    ...     col = getUtility(IPortletManager, name=u'plone.%scolumn' % colName)
-    ...     assignable = getMultiAdapter((self.portal, col), IPortletAssignmentMapping)
-    ...     for name in assignable.keys():
-    ...             del assignable[name]
-
-And finally we'll log in as an administrator::
-
-    >>> from Products.PloneTestCase.setup import portal_owner, default_password
-    >>> browser.open(portalURL + '/login_form?came_from=' + portalURL)
-    >>> browser.getControl(name='__ac_name').value = portal_owner
-    >>> browser.getControl(name='__ac_password').value = default_password
-    >>> browser.getControl(name='submit').click()
+Now we can check out the new types introduced in this package.
 
 
 Addable Content

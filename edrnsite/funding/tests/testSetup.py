@@ -1,17 +1,20 @@
 # encoding: utf-8
-# Copyright 2009 California Institute of Technology. ALL RIGHTS
+# Copyright 2009–2012 California Institute of Technology. ALL RIGHTS
 # RESERVED. U.S. Government Sponsorship acknowledged.
 
-'''
-EDRN funding opportunities: test the setup of this package.
+'''EDRN funding opportunities: test the setup of this package.
 '''
 
-import unittest
-from edrnsite.funding.tests.base import BaseTestCase
+import unittest2 as unittest
+from edrnsite.funding.testing import EDRNSITE_FUNDING_INTEGRATION_TESTING
 from Products.CMFCore.utils import getToolByName
 
-class TestSetup(BaseTestCase):
+class SetupTest(unittest.TestCase):
     '''Unit tests the setup of this package.'''
+    layer = EDRNSITE_FUNDING_INTEGRATION_TESTING
+    def setUp(self):
+        super(SetupTest, self).setUp()
+        self.portal = self.layer['portal']
     def testCatalogIndexes(self):
         '''Check if indexes are properly installed'''
         catalog = getToolByName(self.portal, 'portal_catalog')
@@ -27,7 +30,7 @@ class TestSetup(BaseTestCase):
     
 
 def test_suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestSetup))
-    return suite
-    
+    return unittest.defaultTestLoader.loadTestsFromName(__name__)
+
+if __name__ == '__main__':
+    unittest.main(defaultTest='test_suite')

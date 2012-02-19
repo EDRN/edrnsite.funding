@@ -3,7 +3,16 @@ Changelog
 
 What follows is a history of changes from release to release.
 
-1.0.1 - Upgrade Cleanup
+1.0.2 — TBD
+-----------
+
+This release includes:
+
+* Depending on just Plone the framework instead of Plone the application.
+* Updating to the plone.app.testing fixtures.
+
+
+1.0.1 — Upgrade Cleanup
 -----------------------
 
 This release includes the following:
@@ -12,13 +21,13 @@ This release includes the following:
 * Works around naive timezones by going into the future an extra day.
 
 
-1.0.0 - Plone 4
+1.0.0 — Plone 4
 ---------------
 
 This release makes edrnsite.funding compatible with Plone 4.
 
 
-0.0.0 - Unreleased
+0.0.0 — Unreleased
 ------------------
 
 Initial release into beta.
