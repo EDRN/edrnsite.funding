@@ -9,6 +9,8 @@ RESERVED. U.S. Government Sponsorship acknowledged.
     xmlns:genericsetup='http://namespaces.zope.org/genericsetup'
     i18n_domain='edrnsite.funding'>
 
+    <include package='z3c.autoinclude' file='meta.zcml' />
+    <includeDependencies package='.' />
     <five:registerPackage package="." initialize=".initialize" />
     <include package='.browser'/>
     <include package='.content'/>

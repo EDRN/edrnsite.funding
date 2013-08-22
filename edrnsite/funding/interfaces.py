@@ -7,7 +7,7 @@
 
 from zope.interface import Interface
 from zope import schema
-from zope.app.container.constraints import contains
+from zope.container.constraints import contains
 from edrnsite.funding import ProjectMessageFactory as _
 from Products.ATContentTypes.interface import IATFolder
 
