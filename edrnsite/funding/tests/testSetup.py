@@ -27,7 +27,13 @@ class SetupTest(unittest.TestCase):
         metadata = catalog.schema()
         for i in ('closingDate',):
             self.failUnless(i in metadata)
-    
+    def testDiscussion(self):
+        '''Ensure discussion is off (CA-1229)'''
+        types = getToolByName(self.portal, 'portal_types')
+        for typeName in ('Announcement', 'Funding Folder', 'Funding Opportunity'):
+            self.failIf(types[typeName].allow_discussion, 'Type "%s" allows discussion, but should not' % typeName)
+
+
 
 def test_suite():
     return unittest.defaultTestLoader.loadTestsFromName(__name__)
