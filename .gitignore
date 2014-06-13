@@ -1,0 +1,8 @@
+*.sublime-workspace
+bin
+eggs
+develop-eggs
+parts
+var
+*.log
+.*.cfg
