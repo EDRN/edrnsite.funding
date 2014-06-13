@@ -15,7 +15,7 @@ _url         = 'http://cancer.jpl.nasa.gov/products/edrnsite-funding'
 _downloadURL = 'http://oodt.jpl.nasa.gov/dist/edrnsite'
 _author      = 'Sean Kelly'
 _authorEmail = 'sean.kelly@jpl.nasa.gov'
-_license     = 'Proprietary'
+_license     = 'ALv2'
 _namespaces  = ['edrnsite']
 _zipSafe     = False
 _keywords    = 'web zope plone edrn cancer biomarkers funding funds'
@@ -37,6 +37,7 @@ _classifiers = [
     'Framework :: Plone',
     'Intended Audience :: Healthcare Industry',
     'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: Apache Software License',
     'License :: Other/Proprietary License',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
