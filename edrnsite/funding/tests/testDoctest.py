@@ -6,7 +6,7 @@
 '''
 
 import doctest
-import unittest2 as unittest
+import unittest
 from plone.testing import layered
 from edrnsite.funding.testing import EDRNSITE_FUNDING_FUNCTIONAL_TESTING as LAYER
 

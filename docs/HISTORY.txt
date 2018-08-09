@@ -4,6 +4,12 @@ Changelog
 What follows is a history of changes from release to release.
 
 
+1.0.6 — Plone 4.3.9 Upgrade
+---------------------------
+
+• CA-1592
+
+
 1.0.5 — I Had Some Chicken; Pass Me the FLOSS
 ---------------------------------------------
 
