@@ -36,7 +36,6 @@ _classifiers = [
     'Intended Audience :: Healthcare Industry',
     'Intended Audience :: Science/Research',
     'License :: OSI Approved :: Apache Software License',
-    'License :: Other/Proprietary License',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
     'Topic :: Internet :: WWW/HTTP',
